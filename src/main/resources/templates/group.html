@@ -22,135 +22,25 @@
 </head>
 <body>
 <div class="container">
-    <div class="row">
-        <div class="col">
-            グループ
-        </div>
-        <div class="col">
-            ユーザー
-        </div>
-    </div>
-    <div class="row border-top">
-        <div class="col">
-            クラブ１
-        </div>
-        <div class="col">
-            <div class="row">
-                <div class="col">
-                    Ｃさん
-                </div>
+    <th:block th:if="${!#lists.isEmpty(page.items)}">
+        <hr>
+        <div class="row">
+            <div class="col">
+                グループ
             </div>
-            <div class="row">
-                <div class="col">
-                    Ｆさん
-                </div>
+            <div class="col">
+                ユーザー
             </div>
-            <div class="row">
-                <div class="col">
-                    Ｇさん
+        </div>
+        <div th:each="item : ${page.items}" class="row border-top">
+            <div class="col" th:text="${item.key}"></div>
+            <div class="col">
+                <div class="row" th:each="userName : ${item.value}">
+                    <div class="col" th:text="${userName}"></div>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="row border-top">
-        <div class="col">
-            クラブ２
-        </div>
-        <div class="col">
-            <div class="row">
-                <div class="col">
-                    Ａさん
-                </div>
-            </div>
-            <div class="row">
-                <div class="col">
-                    Ｂさん
-                </div>
-            </div>
-            <div class="row">
-                <div class="col">
-                    Ｃさん
-                </div>
-            </div>
-            <div class="row">
-                <div class="col">
-                    Ｈさん
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="row border-top">
-        <div class="col">
-            部署１
-        </div>
-        <div class="col">
-            <div class="row">
-                <div class="col">
-                    Ａさん
-                </div>
-            </div>
-            <div class="row">
-
-                <div class="col">
-                    Ｃさん
-                </div>
-            </div>
-            <div class="row">
-                <div class="col">
-                    Ｅさん
-                </div>
-            </div>
-            <div class="row">
-                <div class="col">
-                    Ｊさん
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="row border-top">
-        <div class="col">
-            部署２
-        </div>
-        <div class="col">
-            <div class="row">
-                <div class="col">
-                    Ｆさん
-                </div>
-            </div>
-            <div class="row">
-                <div class="col">
-                    Ｈさん
-                </div>
-            </div>
-            <div class="row">
-                <div class="col">
-                    Ｉさん
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="row border-top">
-        <div class="col">
-            部署３
-        </div>
-        <div class="col">
-            <div class="row">
-                <div class="col">
-                    Ｂさん
-                </div>
-            </div>
-            <div class="row">
-                <div class="col">
-                    Ｄさん
-                </div>
-            </div>
-            <div class="row">
-                <div class="col">
-                    Ｇさん
-                </div>
-            </div>
-        </div>
-    </div>
+    </th:block>
 </div>
 </body>
 </html>
