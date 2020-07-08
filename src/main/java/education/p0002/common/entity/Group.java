@@ -14,7 +14,6 @@ public class Group {
     @Column(name = "id")
     String id;
 
-    @Id
     @Column(name = "name")
     String name;
 }
