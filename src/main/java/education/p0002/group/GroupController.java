@@ -41,12 +41,12 @@ public class GroupController {
                 .entrySet()
                 .stream()
                 .map(groupIdAndUserIdsPair -> Pair.of(
-                        Optional.of(groupMap.get(groupIdAndUserIdsPair.getKey())).orElseThrow(() -> {
+                        Optional.ofNullable(groupMap.get(groupIdAndUserIdsPair.getKey())).orElseThrow(() -> {
                             throw new RuntimeException(String.format("データ不整合です。group_user_tblに存在するgroup_id:%sに紐づくgroupがgroup_tblに存在しません。", groupIdAndUserIdsPair.getKey()));
                         }),
                         groupIdAndUserIdsPair.getValue()
                                 .stream()
-                                .map(groupUser -> Optional.of(userMap.get(groupUser.getUserId())).orElseThrow(() -> {
+                                .map(groupUser -> Optional.ofNullable(userMap.get(groupUser.getUserId())).orElseThrow(() -> {
                                     throw new RuntimeException(String.format("データ不整合です。group_user_tblに存在するuser_id:%sに紐づくuserがuser_tblに存在しません。", groupUser.getUserId()));
                                 }))
                                 .sorted(Comparator.comparing(User::getName))
