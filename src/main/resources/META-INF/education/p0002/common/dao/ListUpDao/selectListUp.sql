@@ -1,5 +1,6 @@
 select
-    gpt.id as group_id
+    gpt.id || ust.id as id
+  , gpt.id as group_id
   , gpt.name as group_name
   , ust.id as user_id
   , ust.name as user_name

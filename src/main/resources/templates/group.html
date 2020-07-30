@@ -30,19 +30,22 @@
             ユーザー
         </div>
     </div>
-    <div class="row border-top" th:each="listUpList : ${page.listUpList}">
+    <div class="row border-top" th:each="tyingList : ${page.tyingList}">
+<!--
+        <div class="col" th:text="${tyingList.getGroupName()}">
+-->
+            <div class="col" th:text="${tyingList}">
+                クラブ１
+            </div>
         <!--
-                <div class="col" th:text="${listUpList.getKey().getName()}">
-                    クラブ１
-                </div>
                 <div class="col">
                     <div class="row" th:each="user : ${listUpList.getValue()}">
                         <div class="col" th:text="${user.getName()}">
                             Ｃさん
                         </div>
                     </div>
-        -->
         </div>
+        -->
     </div>
 </div>
 </body>

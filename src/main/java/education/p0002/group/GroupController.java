@@ -41,8 +41,8 @@ public class GroupController {
         // ListUp取得
         List<ListUp> listUpList = listUpDao.selectListUp();
 
-        String workGroup = "";
-        List<String> workUserList = new ArrayList<>();
+//        String workGroup = "";
+//        List<String> workUserList = new ArrayList<>();
 //        for(ListUp listUp : listUpList) {
 //            if (workGroup != "" && workGroup != listUp.groupName) {
 //                workGroup = listUp.groupName;
@@ -52,7 +52,14 @@ public class GroupController {
 //            }
 //            page.tyingList = listUp;
 //        }
-            page.tyingList = listUpList;
+        for (ListUp listUp : page.tyingList = listUpList) {
+            System.out.println(listUp.getGroupName() + listUp.getUserName());
+        }
+
+        System.out.println("listUpList.get(0) = " + listUpList.get(0));
+        //System.out.println("page.tyingList.get(0) = " + page.tyingList.get(0));
+        System.out.println(page.tyingList);
+
 
         model.addAttribute("page", page);
         return "group";
