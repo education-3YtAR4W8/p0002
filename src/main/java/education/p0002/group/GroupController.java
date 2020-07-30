@@ -11,6 +11,7 @@ import education.p0002.common.entity.ListUp;
 import lombok.Getter;
 import lombok.Setter;
 //import org.apache.commons.lang3.tuple.Pair;
+import org.apache.tomcat.util.digester.ArrayStack;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -52,12 +53,32 @@ public class GroupController {
 //            }
 //            page.tyingList = listUp;
 //        }
+
+        Map<String, List<String>> tyingMap = new HashMap<>();
+        List<String> workUser = new ArrayList<>();
+
+        String workGroup = "";
         for (ListUp listUp : page.tyingList = listUpList) {
             System.out.println(listUp.getGroupName() + listUp.getUserName());
+            if (workGroup == "") {
+                workGroup = listUp.getGroupName();
+                workUser.add(listUp.getUserName());
+                System.out.println(workGroup + listUp.getUserName());
+            } else {
+                if (workGroup == listUp.getGroupName()) {
+                    workUser.add(listUp.getUserName());
+                } else {
+                    tyingMap.put(workGroup, workUser);
+
+                    workUser.clear();
+                    workGroup = listUp.getGroupName();
+                }
+                System.out.println(listUp.getGroupName() + listUp.getUserName());
+            }
+
         }
 
         System.out.println("listUpList.get(0) = " + listUpList.get(0));
-        //System.out.println("page.tyingList.get(0) = " + page.tyingList.get(0));
         System.out.println(page.tyingList);
 
 
