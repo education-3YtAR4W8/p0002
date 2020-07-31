@@ -42,53 +42,33 @@ public class GroupController {
         // ListUp取得
         List<ListUp> listUpList = listUpDao.selectListUp();
 
-//        String workGroup = "";
-//        List<String> workUserList = new ArrayList<>();
-//        for(ListUp listUp : listUpList) {
-//            if (workGroup != "" && workGroup != listUp.groupName) {
-//                workGroup = listUp.groupName;
-//                page.tyingList = new tyingList(workGroup, workUserList);
-//            } else {
-//                workUserList.add = listUp.getUserName();
-//            }
-//            page.tyingList = listUp;
-//        }
-
-//        Map<String, List<String>> tyingMap = new HashMap<>();
-//        page.tyingMap = new HashMap<>();
         page.tyingMap = new TreeMap<>();
         List<String> workUser = new ArrayList<>();
 
         String workGroup = "";
-//        for (ListUp listUp : page.tyingList = listUpList) {
         for (ListUp listUp : listUpList) {
-            System.out.println("00:listUp = " + listUp.getGroupName() + listUp.getUserName());
+            System.out.println("00 : " + listUp.getGroupName() + listUp.getUserName());
             if (workGroup == "") {
                 workGroup = listUp.getGroupName();
                 workUser.add(listUp.getUserName());
-                System.out.println(workGroup + listUp.getUserName());
+                System.out.println("01 : " + workGroup + listUp.getUserName());
             } else {
                 if (workGroup == listUp.getGroupName()) {
                     workUser.add(listUp.getUserName());
                 } else {
-//                    tyingMap.put(workGroup, workUser);
                     page.tyingMap.put(workGroup, workUser);
 
-//                    workUser.clear();
                     workUser = new ArrayList<>();
                     workGroup = listUp.getGroupName();
                     workUser.add(listUp.getUserName());
                 }
-                System.out.println("01:listUp = " + listUp.getGroupName() + listUp.getUserName());
+                System.out.println("02 : " + listUp.getGroupName() + listUp.getUserName());
             }
         }
         page.tyingMap.put(workGroup, workUser);
 
-        System.out.println("03:listUpList.get(0) = " + listUpList.get(0));
-
-//        System.out.println(page.tyingList);
-        System.out.println("04:page.tyingMap = " + page.tyingMap);
-
+        System.out.println("03 : " + listUpList.get(0));
+        System.out.println("04 : " + page.tyingMap);
 
         model.addAttribute("page", page);
         return "group";
@@ -97,7 +77,6 @@ public class GroupController {
     @Getter
     @Setter
     static public class Page {
-//        List<ListUp> tyingList;
         Map<String, List<String>> tyingMap;
     }
 }
