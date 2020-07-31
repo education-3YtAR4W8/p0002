@@ -30,22 +30,31 @@
             ユーザー
         </div>
     </div>
+    <!--
     <div class="row border-top" th:each="tyingList : ${page.tyingList}">
-<!--
-        <div class="col" th:text="${tyingList.getGroupName()}">
--->
-            <div class="col" th:text="${tyingList}">
-                クラブ１
-            </div>
-        <!--
-                <div class="col">
-                    <div class="row" th:each="user : ${listUpList.getValue()}">
-                        <div class="col" th:text="${user.getName()}">
-                            Ｃさん
-                        </div>
-                    </div>
+        <div class="col" th:text="${tyingList}">
+            クラブ１
         </div>
-        -->
+        <div class="col">
+            <div class="row" th:each="user : ${listUpList.getValue()}">
+                <div class="col" th:text="${user.getName()}">
+                    Ｃさん
+                </div>
+            </div>
+        </div>
+    </div>
+    -->
+    <div class="row border-top" th:each="tyingMap : ${page.tyingMap}">
+        <div class="col" th:text="${tyingMap.getKey()}">
+            クラブ１
+        </div>
+        <div class="col">
+            <div class="row" th:each="user : ${tyingMap.getValue()}">
+                <div class="col" th:text="${user}">
+                    Ｃさん
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 </body>
